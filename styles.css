@@ -206,7 +206,8 @@ hr {
 .comparison_image {
   width: 100vw;   
   height: 100vh;  
-  object-fit: cover; 
+  object-fit: none; 
+  object-position: 50% 20%;
   display: block;
   position: absolute;
   
@@ -231,7 +232,7 @@ hr {
     height: 100%;
     width: 3px;
     background: #666666cb;
-    z-index: 2;
+    z-index: 3;
     transform: translateX(-50%);
 }
 
@@ -256,7 +257,7 @@ hr {
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    z-index: 1;
+    z-index: 3;
 }
 
 .arrow-left {
@@ -274,3 +275,10 @@ hr {
 }
 /* #endregion */
 
+.sizeComparison_image {
+  position: absolute;
+  z-index: 2;
+  top: 40%;
+  left: 45%;
+  width: 434px;
+}

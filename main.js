@@ -2,6 +2,7 @@ const image1 = document.getElementById("image1");
 const image2 = document.getElementById("image2");
 const handle = document.getElementById("handle");
 const wrapper_left = document.getElementById('wrapper_left');
+const container = document.getElementById('comparison-container');
 
 function updateImages() {
   let time_left = document.querySelector('input[name="radio_time_left"]:checked')?.value;
@@ -76,6 +77,7 @@ function updateOverlay() {
   } else {
     handle.style.opacity = 1
   }
+  /* image1.src = "data/size_test.png" */ // REMOVE
 }
 
 // checks if the left and right canvas have the same image and overlay
@@ -96,8 +98,6 @@ function checkEqual() {
 document.addEventListener('DOMContentLoaded', () => {updateImages()});
 
 // #region COMPARISON HANDLE
-const container = document.getElementById('comparison-container');
-
 let isDragging = false;
 
 // 1. When the user clicks down, start dragging
@@ -180,4 +180,27 @@ const checkboxes_overlayData_right = document.querySelectorAll('input[name="over
 checkboxes_overlayData_right.forEach(checkbox => {
   checkbox.addEventListener('change', () => {updateOverlay()})})
       
+// #endregion
+
+// #region SIZE COMPARISON
+
+/* const checkbox_vienna = document.getElementById("checkbox_vienna") */
+
+
+
+/* image1.onload = function() {
+  let viewport_factor = Number(image1.width) / Number(image1.naturalWidth);
+  let scale_factor = Number(67.54);
+  console.log(`Viewport Factor: ${viewport_factor}`)
+  console.log(`Scale Factor: 1px = ${scale_factor}`)
+
+  let new_sizeImage = document.createElement("img");
+  new_sizeImage.classList.add("sizeComparison_image");
+  new_sizeImage.id = "Vienna";
+  new_sizeImage.src = "data/vienna.png";
+  new_sizeImage.width = "113px"
+  container.append(new_sizeImage);
+} */
+
+
 // #endregion
