@@ -4,7 +4,6 @@ const handle = document.getElementById("handle");
 const wrapper_left = document.getElementById("wrapper_left");
 const container = document.getElementById("comparison-container");
 const burnt_area = document.getElementById("burnt_area_text");
-
 // real world width of the elements in meters (changed so it fits the size_text.png image, not a clean solution :/). elisoidal measurents are used. EPSG:3857
 const sizes_dict = {
   'sat' : 168861, /* 168861 */
@@ -16,6 +15,7 @@ const sizes_dict = {
   /* 'neusiedlerSee': 14500 */
 }
 
+// #region functions and eventlisteners on document and window
 function updateImages() {
   let time_left = document.querySelector('input[name="radio_time_left"]:checked')?.value;
   let time_right = document.querySelector('input[name="radio_time_right"]:checked')?.value;
@@ -163,6 +163,19 @@ function resizeElements() {
   })
 }
 
+// if the viewport is small, sections in panel_left are collapsed
+function adjustToScreenHeight() {
+  let height = window.innerHeight;
+  if (height < 781) {
+    let section = document.getElementById(`section_SC`)
+    let triangle = document.getElementById(`triangle_SC`);
+    triangle.style.rotate = "-90deg";
+    section.style.display = 'none';
+  }
+}
+
+
+adjustToScreenHeight();
 document.addEventListener('DOMContentLoaded', () => {updateImages()});
 let scale;
 document.addEventListener('DOMContentLoaded', () => {
@@ -170,6 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
   resizeElements();
 });
 window.addEventListener('resize', () => {resizeElements()});
+
+// #endregion
 
 // #region COMPARISON HANDLE
 let isDragging = false;
@@ -320,21 +335,26 @@ SC_buttons.forEach(button => {
     })
   })})
 
+// #endregion
 
+// #region COLLAPSE SECTIONS
+function collapseSection(name) {
+  let section = document.getElementById(`section_${name}`)
+  let triangle = document.getElementById(`triangle_${name}`);
+  let rotation = triangle.style.rotate;
 
-/* image1.onload = function() {
-  let viewport_factor = Number(image1.width) / Number(image1.naturalWidth);
-  let scale_factor = Number(67.54);
-  console.log(`Viewport Factor: ${viewport_factor}`)
-  console.log(`Scale Factor: 1px = ${scale_factor}`)
+  // -90deg means the section is closed 0deg means it is open
+  if (rotation === "-90deg") {
+    triangle.style.rotate = "0deg";
+    section.style.display = 'block';
+  } else {
+    triangle.style.rotate = "-90deg";
+    section.style.display = 'none';
+  }
+}
 
-  let new_sizeImage = document.createElement("img");
-  new_sizeImage.classList.add("SC_image");
-  new_sizeImage.id = "Vienna";
-  new_sizeImage.src = "data/vienna.png";
-  new_sizeImage.width = "113px"
-  container.append(new_sizeImage);
-} */
-
+triangle_CC.addEventListener("click", () => {collapseSection("CC")});
+triangle_IM.addEventListener("click", () => {collapseSection("IM")});
+triangle_SC.addEventListener("click", () => {collapseSection("SC")});
 
 // #endregion

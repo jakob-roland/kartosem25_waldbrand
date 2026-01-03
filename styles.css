@@ -78,7 +78,7 @@ p {
 }
 
 .heading {
-  margin: 10px 0px;
+  margin: 10px 0px 10px 0px;
   font-weight: bold;
 }
 
@@ -130,6 +130,20 @@ hr {
 .centered {
   text-align: center;
 }
+
+.triangle_section {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  
+  border-top: 8px solid #333;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  transition: rotate 0.3s ease;
+}
+
+
 /* #endregion */
 
 /* #region INPUT BASEMAP */

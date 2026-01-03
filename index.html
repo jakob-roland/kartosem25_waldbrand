@@ -13,14 +13,20 @@
         <h2>Waldbrand bei Alexandroupoli</h2>
         <p>August, 2023</p>
         
-        <!-- COMPARISON CANVAS IMAGE SELECTION -->
-        <div class="grid_main"> 
-            <p></p>
-            <p class="heading_center">Links</p>
-            <p class="heading_center">Rechts</p>
+        <!-- COMPARISON CANVAS IMAGE SELECTION (CC) -->
+        <div>
+            <span class="triangle_section" id="triangle_CC"></span>
+            <span class="bold large_text">Grundkarten</span>
+        </div>
 
-            <p class="heading">Zeit</p>
-            <div class="grid_3"> <!-- RADIO BUTTONS TIME LEFT -->
+        <div id="section_CC" class="section">
+            <div class="grid_main"> 
+                <p></p>
+                <p class="bold centered">Links</p>
+                <p class="bold centered">Rechts</p>
+
+                <p class="bold">Zeit</p>
+                <div class="grid_3"> <!-- RADIO BUTTONS TIME LEFT -->
                 <label class="centered">
                     <input type="radio" name="radio_time_left" class="radioButton_img" value="2023-08-03" checked>
                     <img src="icons/tree.svg" alt="Before" class="radio_img">
@@ -38,9 +44,9 @@
                     <img src="icons/dead_tree.svg" alt="After" class="radio_img">
                     <span class="small_text">nach</span>
                 </label>
-            </div>
+                </div>
 
-            <div class="grid_3"> <!-- RADIO BUTTONS TIME RIGHT -->
+                <div class="grid_3"> <!-- RADIO BUTTONS TIME RIGHT -->
                 <label class="centered">
                     <input type="radio" name="radio_time_right" class="radioButton_img" value="2023-08-03">
                     <img src="icons/tree.svg" alt="Before" class="radio_img">
@@ -58,10 +64,10 @@
                     <img src="icons/dead_tree.svg" alt="After" class="radio_img">
                     <span class="small_text">nach</span>
                 </label>
-            </div>
+                </div>
 
-            <p class="heading">Karte</p>
-            <div class="grid_2"> <!-- RADIO BUTTONS BASE LEFT -->
+                <p class="bold">Karte</p>
+                <div class="grid_2"> <!-- RADIO BUTTONS BASE LEFT -->
                 <label class="centered">
                     <input type="radio" name="radio_base_left" class="radioButton_img" value="OSM">
                     <img src="icons/osm_logo.png" alt="After" class="radio_img">
@@ -73,9 +79,9 @@
                     <img src="icons/satellite.svg" alt="After" class="radio_img">
                     <div class="small_text">Satellit</div>
                 </label>
-            </div>
+                </div>
 
-            <div class="grid_2"> <!-- RADIO BUTTONS BASE RIGHT -->
+                <div class="grid_2"> <!-- RADIO BUTTONS BASE RIGHT -->
                 <label class="centered">
                     <input type="radio" name="radio_base_right" class="radioButton_img" value="OSM">
                     <img src="icons/osm_logo.png" alt="After" class="radio_img">
@@ -86,10 +92,10 @@
                     <img src="icons/satellite.svg" alt="After" class="radio_img">
                     <div class="small_text">Satellit</div>
                 </label>
-            </div>
+                </div>
 
-            <p class="heading">Daten</p>
-            <div class="grid_2"> <!-- CHECKBOXES ADDITIONAL DATA LEFT -->
+                <p class="bold">Daten</p>
+                <div class="grid_2"> <!-- CHECKBOXES ADDITIONAL DATA LEFT -->
                 <label class="centered">
                     <input type="checkbox" name="overlay_data_left" value="active_fires" class="checkBox_img">
                     <img src="icons/fire.svg" alt="Aktive Brände" class="radio_img">
@@ -101,9 +107,9 @@
                     <img src="icons/dead_tree.svg" alt="Verbrannte Fläche" class="radio_img">
                     <div class="small_text">Verbrannte Fläche</div>
                 </label>
-            </div>
+                </div>
 
-            <div class="grid_2"> <!-- CHECKBOXES ADDITIONAL DATA RIGHT -->
+                <div class="grid_2"> <!-- CHECKBOXES ADDITIONAL DATA RIGHT -->
                 <label class="centered">
                     <input type="checkbox" name="overlay_data_right" value="active_fires" class="checkBox_img">
                     <img src="icons/fire.svg" alt="Aktive Brände" class="radio_img">
@@ -115,12 +121,17 @@
                     <img src="icons/dead_tree.svg" alt="Verbrannte Fläche" class="radio_img">
                     <div class="small_text">Verbrannte Fläche</div>
                 </label>
+                </div>
             </div>
+        </div>    
+
+        <!-- Radio Buttons Image Mode (IM) -->
+        <div>
+            <span class="triangle_section" id="triangle_IM"></span>
+            <span class="bold large_text">Darstellungsmodus<img src="icons/satellite.svg" class="icon"></span>
         </div>
 
-        <!-- Radio Buttons Image Mode -->
-        <p class="heading">Darstellungsmodus<img src="icons/satellite.svg" class="icon"></p>
-        <div> 
+        <div id="section_IM" class="section"> 
             <div class="radio_group">
                 <input type="radio" id="radio_TrueColor" name="img_mode" value="TrueColor" checked>
                 <label for="radio_TrueColor">True color</label>
@@ -143,56 +154,60 @@
             </div>
         </div>
 
+
         <!-- SIZE COMPARISON (SC) BUTTONS -->
         <div class="radio_group">
-            <span class="underline heading">Größenvergleich</span>
+            <span class="triangle_section" id="triangle_SC"></span>
+            <span class="underline bold  large_text">Größenvergleich</span>
             <img src="icons/drag-and-drop.svg" class="icon">
             <span class="info_box_big">Vergleichsformen mittels Drag-and-Drop auf die Kartenfläche ziehen und bewegen. Rechtsklick zum entfernen.</span>
         </div>
-        
-        <p class="small_text" id="burnt_area_text">Verbrannte Fläche: 0 km²</p>
-        <div class="grid_2_gap">
 
-            <div class="centered">
-                <button type="button" class="SC_button" name="SC_buttons" value="vienna">
-                    <img src="data/vienna.png" alt="vienna" class="SC_button_image" draggable="false" id="SC_button_image_vienna">
-                </button>
-                <div class="small_text">Wien (415 km²)</div>
-            </div>
+        <div id="section_SC" class="section">
+            <p class="small_text" id="burnt_area_text">Verbrannte Fläche: 0 km²</p>
+            <div class="grid_2_gap">
 
-            <div class="centered">
-                <button type="button" class="SC_button" name="SC_buttons" value="liechtenstein">
-                    <img src="data/liechtenstein.png" alt="liechtenstein" class="SC_button_image" draggable="false" id="SC_button_image_liechtenstein">
-                </button>
-                <div class="small_text">Liechtenstein (161 km²)</div>
-            </div>
+                <div class="centered">
+                    <button type="button" class="SC_button" name="SC_buttons" value="vienna">
+                        <img src="data/vienna.png" alt="vienna" class="SC_button_image" draggable="false" id="SC_button_image_vienna">
+                    </button>
+                    <div class="small_text">Wien (415 km²)</div>
+                </div>
 
-            <div class="centered">
-                <button type="button" class="SC_button" name="SC_buttons" value="attersee">
-                    <img src="data/attersee.png" alt="attersee" class="SC_button_image" draggable="false" id="SC_button_image_attersee">
-                </button>
-                <div class="small_text">Attersee (46 km²)</div>
-            </div>
+                <div class="centered">
+                    <button type="button" class="SC_button" name="SC_buttons" value="liechtenstein">
+                        <img src="data/liechtenstein.png" alt="liechtenstein" class="SC_button_image" draggable="false" id="SC_button_image_liechtenstein">
+                    </button>
+                    <div class="small_text">Liechtenstein (161 km²)</div>
+                </div>
 
-            <div class="centered">
-                <button type="button" class="SC_button" name="SC_buttons" value="athen">
-                    <img src="data/athen.png" alt="athen" class="SC_button_image" draggable="false" id="SC_button_image_athen">
-                </button>
-                <div class="small_text">Athen Zentrum (39 km²)</div>
+                <div class="centered">
+                    <button type="button" class="SC_button" name="SC_buttons" value="attersee">
+                        <img src="data/attersee.png" alt="attersee" class="SC_button_image" draggable="false" id="SC_button_image_attersee">
+                    </button>
+                    <div class="small_text">Attersee (46 km²)</div>
+                </div>
+
+                <div class="centered">
+                    <button type="button" class="SC_button" name="SC_buttons" value="athen">
+                        <img src="data/athen.png" alt="athen" class="SC_button_image" draggable="false" id="SC_button_image_athen">
+                    </button>
+                    <div class="small_text">Athen Zentrum (39 km²)</div>
+                </div>
             </div>
-            
         </div>
+
 
         <!-- SOURCES -->
         <div class="impressum">
             <div>
-                <p class="heading">Impressum:</p>
+                <p class="bold">Impressum:</p>
                 <p>01-2026</p>
                 <p>Universität Wien</p>
                 <p>Bibiana Hajová und Jakob Roland</p>
             </div>
             <div class="rightbound">
-                <p class="heading">Datenquellen:</p>
+                <p class="bold">Datenquellen:</p>
                 <p>Sentinel 2</p>
                 <p>Copernicus EMS</p>
                 <p>OpenStreetMap Contributors</p>
@@ -200,6 +215,7 @@
         </div>
         
     </div>
+
 
     <!-- SCALEBAR -->
     <div id="scalebar_container">
@@ -215,6 +231,7 @@
             <div class="scalebar_black"></div>
         </div>
     </div>
+
 
     <!-- MAIN CANVAS -->
     <div id="comparison-container">
@@ -236,6 +253,7 @@
 
         <!-- <img src="data/vienna.png" class="sizeComparison_image"> -->
     </div>
+
 
     <script type="module" src="./main.js"></script>
 
