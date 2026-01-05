@@ -161,14 +161,21 @@ function resizeElements() {
     let shape_name = shape.id.split('_')[0];
     shape.style.width = `${sizes_dict[shape_name]/scale}px`;
   })
+
+  return scale;
 }
 
 // if the viewport is small, sections in panel_left are collapsed
 function adjustToScreenHeight() {
   let height = window.innerHeight;
-  if (height < 781) {
+  if (height < 804) {
     let section = document.getElementById(`section_SC`)
     let triangle = document.getElementById(`triangle_SC`);
+    triangle.style.rotate = "-90deg";
+    section.style.display = 'none';
+
+    section = document.getElementById(`section_IM`)
+    triangle = document.getElementById(`triangle_IM`);
     triangle.style.rotate = "-90deg";
     section.style.display = 'none';
   }
@@ -179,10 +186,10 @@ adjustToScreenHeight();
 document.addEventListener('DOMContentLoaded', () => {updateImages()});
 let scale;
 document.addEventListener('DOMContentLoaded', () => {
-  scale = getPixelScale();
-  resizeElements();
+  scale = resizeElements();  
 });
-window.addEventListener('resize', () => {resizeElements()});
+window.addEventListener('resize', () => {scale = resizeElements()});
+
 
 // #endregion
 
@@ -295,6 +302,12 @@ SC_buttons.forEach(button => {
     // only left click activates the function
     if (e.button !== 0) return;
     SC_shape_count ++;
+
+    // checks if scale is null
+    if (!scale) {
+      console.log("scale is null. Recalculating scale")
+      scale = resizeElements();
+    }
 
     // shape creation
     let SC_shape = document.createElement("img");
