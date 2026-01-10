@@ -4,6 +4,7 @@ const handle = document.getElementById("handle");
 const wrapper_left = document.getElementById("wrapper_left");
 const container = document.getElementById("comparison-container");
 const burnt_area = document.getElementById("burnt_area_text");
+
 // real world width of the elements in meters (changed so it fits the size_text.png image, not a clean solution :/). elisoidal measurents are used. EPSG:3857
 const sizes_dict = {
   'sat' : 168861, /* 168861 */
@@ -13,6 +14,32 @@ const sizes_dict = {
   'athen': 10500, 
   'scalebar': 30000 
   /* 'neusiedlerSee': 14500 */
+}
+
+// preloading of images
+const imageSources = [
+  'data/2023-08-03_NBR.png',
+  'data/2023-08-03_NDVI.png',
+  'data/2023-08-03_TrueColor.png',
+  'data/2023-08-23_active_fires.png',
+  'data/2023-08-23_burnt_area.png',
+  'data/2023-08-23_NBR.png',
+  'data/2023-08-23_NDVI.png',
+  'data/2023-08-23_TrueColor.png',
+  'data/2023-08-28_NBR.png',
+  'data/2023-08-28_NDVI.png',
+  'data/2023-08-28_TrueColor.png',
+  'data/2023-09-12_burnt_area.png',
+  'data/2023-09-12_NBR.png',
+  'data/2023-09-12_NDVI.png',
+  'data/2023-09-12_TrueColor.png'
+];
+
+function preloadImages(sources) {
+  sources.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 }
 
 // #region functions and eventlisteners on document and window
