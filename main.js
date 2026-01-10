@@ -393,6 +393,14 @@ SC_buttons.forEach(button => {
       if (e.button !== 0) return;
       isDragging_SC = SC_shape.id;
     })
+    // for touch screen
+    SC_shape.addEventListener('touchstart', (e) => {
+      // Set the ID to track which specific shape is being dragged
+      isDragging_SC = SC_shape.id;
+  
+      // Prevent the screen from scrolling or zooming while moving the shape
+     if (e.cancelable) e.preventDefault();
+    }, { passive: false });
   })})
 
 // #endregion
