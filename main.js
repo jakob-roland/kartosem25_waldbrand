@@ -245,6 +245,55 @@ window.addEventListener('mousemove', (e) => {
     SC_shape.style.top = e.clientY + 'px';
   }
 });
+
+// #region TOUCH SUPPORT
+
+// 1. Touch Start
+container.addEventListener('touchstart', (e) => {
+  if (!checkEqual()) {
+    isDragging = true;
+    // Prevent scrolling when interacting with the slider
+    e.preventDefault(); 
+  }
+}, { passive: false });
+
+// 2. Touch End
+window.addEventListener('touchend', () => {
+  isDragging = false;
+  isDragging_SC = null;
+});
+
+// 3. Touch Move
+window.addEventListener('touchmove', (e) => {
+  if (!isDragging && !isDragging_SC) return;
+
+  // Use the first finger touch
+  const touch = e.touches[0];
+
+  if (isDragging) {
+    const rect = container.getBoundingClientRect();
+    let x = touch.clientX - rect.left;
+
+    if (x < 0) x = 0;
+    if (x > rect.width) x = rect.width;
+
+    const percentage = (x / rect.width) * 100;
+
+    wrapper_left.style.width = `${percentage}%`;
+    handle.style.left = `${percentage}%`;
+    
+    // Prevent page bounce/scroll while dragging
+    e.preventDefault(); 
+  } else if (isDragging_SC) {
+    let SC_shape = document.getElementById(isDragging_SC);
+    SC_shape.style.left = touch.clientX + 'px';
+    SC_shape.style.top = touch.clientY + 'px';
+    e.preventDefault();
+  }
+}, { passive: false });
+
+// #endregion
+
 // #endregion
 
 // #region RADIO BUTTONS EVENT LISTENERS
@@ -336,7 +385,6 @@ SC_buttons.forEach(button => {
       e.preventDefault(); // stop browser context menu
       SC_shape.remove();
       SC_shape_count --;
-      console.log(`Removed a shape. Now there are ${SC_shape_count}`);
     });
 
     // for dragging
