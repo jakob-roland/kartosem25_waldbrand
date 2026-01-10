@@ -18,9 +18,11 @@ html, body {
   
   padding: 20px;
   padding-top: 15px;
-  max-width: 400px;
+  width: 400px;
   max-height: 100vh;
   border-radius: 0px 0px 5px 0px;
+
+  transition: transform 0.3s ease;
 
   overflow: auto;
   box-sizing: border-box;
@@ -74,6 +76,7 @@ html, body {
 /* #region PANEL LEFT REST */
 h2 {
   margin: 0px;
+  display: inline-block;
 }
 
 p {
@@ -135,6 +138,23 @@ a {
   border-top: 8px solid #333;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
+
+  transition: rotate 0.3s ease;
+}
+
+.triangle_main {
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  rotate: 0deg;
+  top: 20px;
+  left: 385px;
+  /* transform: translateX(10px); */
+  
+  border-right: 9px solid #333;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
 
   transition: rotate 0.3s ease;
 }

@@ -326,7 +326,6 @@ SC_buttons.forEach(button => {
     isDragging_SC = SC_shape.id;
 
     document.body.appendChild(SC_shape);
-    console.log(`Added a shape. Now there are ${SC_shape_count}`);
 
     // changes the color of the image in the button randomly (between 20 and 340)
     let deg = Math.floor(Math.random() * 340 + 20)
@@ -351,10 +350,17 @@ SC_buttons.forEach(button => {
 // #endregion
 
 // #region COLLAPSE SECTIONS
-function collapseSection(name) {
+function collapseSection(name, close) {
   let section = document.getElementById(`section_${name}`)
   let triangle = document.getElementById(`triangle_${name}`);
   let rotation = triangle.style.rotate;
+
+  // if close is true the section only closes, but doesnt open if already closed
+  if (close) {
+    triangle.style.rotate = "-90deg";
+    section.style.display = 'none';
+    return;
+  }
 
   // -90deg means the section is closed 0deg means it is open
   if (rotation === "-90deg") {
@@ -366,8 +372,29 @@ function collapseSection(name) {
   }
 }
 
-triangle_CC.addEventListener("click", () => {collapseSection("CC")});
-triangle_IM.addEventListener("click", () => {collapseSection("IM")});
-triangle_SC.addEventListener("click", () => {collapseSection("SC")});
+triangle_CC.addEventListener("click", () => {collapseSection("CC", false)});
+triangle_IM.addEventListener("click", () => {collapseSection("IM", false)});
+triangle_SC.addEventListener("click", () => {collapseSection("SC", false)});
+
+// Collapse panel left
+triangle_main.addEventListener("click", () => {
+  let panel_left = document.getElementById("panel-left");
+  let triangle = document.getElementById("triangle_main");
+  let rotation = triangle.style.rotate;
+  console.log(rotation);
+
+    // 180 deg means the section is closed 0deg means it is open
+  if (rotation === "180deg") {
+    triangle.style.rotate = "0deg";
+    panel_left.style.transform = "translateX(0px)";
+  } else {
+    collapseSection("CC", true);
+    collapseSection("IM", true);
+    collapseSection("SC", true);
+
+    triangle.style.rotate = "180deg";
+    panel_left.style.transform = "translateX(-380px)";
+  }
+})
 
 // #endregion
