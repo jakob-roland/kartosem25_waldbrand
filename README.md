@@ -7,4 +7,5 @@ Die im Rahmen des Seminars "Geokommunikation in der Risikoprävention und Katast
 - Seminararbeit Bibiana Hajová: "Waldbrände -- Kartengestützte Risikokommunikation und Routenplanung"
 - Seminararbeit Jakob Roland: "Waldbrände in Europa -- Analyse und Kommunikation"
 - Interaktive Karte zum Waldbrand bei Alexandroupoli, Griechenland 2023:
+  https://jakob-roland.github.io/kartosem25_waldbrand/
 - Kurzvideo zur Waldbrandprävention
