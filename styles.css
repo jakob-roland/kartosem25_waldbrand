@@ -11,7 +11,7 @@ html, body {
 #panel-left {
   position: absolute;
   top: 0;
-  z-index: 3;
+  z-index: 4;
 
   background-color: #798daa;
   opacity: 0.8;
@@ -41,6 +41,7 @@ html, body {
   display: grid;
   grid-template-columns: 8% 46% 46%;
   width: inherit;
+  margin-bottom: 10px;
   /* column-gap: 20px; */
 }
 
@@ -277,6 +278,18 @@ a {
   object-position: 50% 20%;
   display: block;
   position: absolute;
+  
+  pointer-events: none;
+}
+
+#overlay_img{
+  width: 100vw;   
+  height: 100vh;  
+  object-fit: cover; 
+  object-position: 50% 20%;
+  display: block;
+  position: absolute;
+  z-index: 3;
   
   pointer-events: none;
 }

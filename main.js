@@ -335,15 +335,15 @@ radio_time_right.forEach(radio => {
   radio.addEventListener('change', () => {updateImages()})
 });
 
-// Base Radio Buttons
-const radio_base_left = document.querySelectorAll('input[name="radio_base_left"]');
+// Base Radio Buttons DEAKTIVIERT
+/* const radio_base_left = document.querySelectorAll('input[name="radio_base_left"]');
 radio_base_left.forEach(radio => {
   radio.addEventListener('change', () => {updateImages()})
 });
 const radio_base_right = document.querySelectorAll('input[name="radio_base_right"]');
 radio_base_right.forEach(radio => {
   radio.addEventListener('change', () => {updateImages()})
-});
+}); */
 
 // Mode Radio Buttons
 const radio_Imagemode = document.querySelectorAll('input[name="img_mode"]');
@@ -355,6 +355,18 @@ radio_Imagemode.forEach(radio => {
 // #endregion
 
 // #region OVERLAY DATA
+const checkbox_orientationOverlay = document.getElementById("orientation_reference");
+const overlay_img = document.getElementById("overlay_img");
+
+checkbox_orientationOverlay.addEventListener('change', () => {
+  console.log(checkbox_orientationOverlay.checked)
+  if (checkbox_orientationOverlay.checked){
+    overlay_img.style.opacity = 1;
+  } else {
+    overlay_img.style.opacity = 0;
+  }
+})
+
 
 const checkboxes_overlayData_left = document.querySelectorAll('input[name="overlay_data_left"]');
 checkboxes_overlayData_left.forEach(checkbox => {

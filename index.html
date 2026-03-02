@@ -69,8 +69,9 @@
                 </label>
                 </div>
 
+<!-- OSM GRUNDKARTE OPTION DEAKTIVIERT
                 <p class="bold">Karte</p>
-                <div class="grid_2"> <!-- RADIO BUTTONS BASE LEFT -->
+                <div class="grid_2"> 
                 <label class="centered">
                     <input type="radio" name="radio_base_left" class="radioButton_img" value="OSM">
                     <img src="icons/osm_logo.png" alt="After" class="radio_img">
@@ -84,7 +85,7 @@
                 </label>
                 </div>
 
-                <div class="grid_2"> <!-- RADIO BUTTONS BASE RIGHT -->
+                <div class="grid_2"> 
                 <label class="centered">
                     <input type="radio" name="radio_base_right" class="radioButton_img" value="OSM">
                     <img src="icons/osm_logo.png" alt="After" class="radio_img">
@@ -95,7 +96,7 @@
                     <img src="icons/satellite.svg" alt="After" class="radio_img">
                     <div class="small_text">Satellit</div>
                 </label>
-                </div>
+                </div> -->
 
                 <p class="bold">Daten</p>
                 <div class="grid_2"> <!-- CHECKBOXES ADDITIONAL DATA LEFT -->
@@ -126,7 +127,13 @@
                 </label>
                 </div>
             </div>
-        </div>    
+            <label class="bold">
+                Orientierungsgrundlage:
+                <input type="checkbox" checked="true" id="orientation_reference"></input>
+            </label>
+        </div>   
+
+        
 
         <!-- Radio Buttons Image Mode (IM) -->
         <div>
@@ -239,6 +246,7 @@
     <!-- MAIN CANVAS -->
     <div id="comparison-container">
         
+        <img id="overlay_img" src="data/orientation_overlay.png">
 
         <div id="wrapper_right">
             <img id="image2" class="comparison_image" src="data/2023-08-23_TrueColor.png">
